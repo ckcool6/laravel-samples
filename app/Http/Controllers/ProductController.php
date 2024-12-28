@@ -13,7 +13,10 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('products.index', ['products' => Product::orderby('created_at')->paginate(3)]);
+        return view(
+            'products.index',
+            ['products' => Product::orderby('created_at')->paginate(3)]
+        );
     }
 
     public function create()
@@ -39,8 +42,10 @@ class ProductController extends Controller
         return view('products.edit', compact('product'));
     }
 
-    public function update(SaveProductRequest $request, Product $product)
-    {
+    public function update(
+        SaveProductRequest $request,
+        Product $product
+    ) {
 
         $product->update($request->validated());
 
@@ -53,7 +58,6 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('products.index')
-                         ->with('status', 'product deleted');
-
+            ->with('status', 'product deleted');
     }
 }

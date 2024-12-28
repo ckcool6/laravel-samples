@@ -13,7 +13,7 @@
         <x-slot:title>
             标题
         </x-slot>
-        垃圾垃圾
+            内容
     </x-card>
 
 </x-layout>
